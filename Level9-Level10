@@ -1,2 +1,4 @@
 Task: The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
-Commands used: grep(
+Commands used: grep(finds text inside files), strings.
+Command: strings data.txt | grep "=="
+Password: FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
