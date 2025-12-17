@@ -1,0 +1,3 @@
+Task: The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.
+Commands: nmap -p30000 -t4 -sV localhost, nc localhost 30000,  echo 'MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS' | nc localhost 30000.
+Password: 8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
