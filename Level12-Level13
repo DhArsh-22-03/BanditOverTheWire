@@ -1,0 +1,83 @@
+Task: The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!).
+commands: bandit12@bandit:~$ ls
+data.txt
+bandit12@bandit:~$ mkdir /tmp/dhars
+mkdir: cannot create directory ‘/tmp/dhars’: File exists
+bandit12@bandit:~$ cp data.txt /tmp/dhars
+bandit12@bandit:~$ cd /tmp/dhars
+bandit12@bandit:/tmp/dhars$ ls
+data.txt
+bandit12@bandit:/tmp/dhars$ xxd -r data.txt > data
+bandit12@bandit:/tmp/dhars$ ls
+data  data.txt
+bandit12@bandit:/tmp/dhars$ file data
+data: gzip compressed data, was "data2.bin", last modified: Tue Oct 14 09:26:00 2025, max compression, from Unix, original size modulo 2^32 572
+bandit12@bandit:/tmp/dhars$ mv data file.gz
+bandit12@bandit:/tmp/dhars$ gzip -d file.gz
+bandit12@bandit:/tmp/dhars$ ls
+data.txt  file
+bandit12@bandit:/tmp/dhars$ file file
+file: bzip2 compressed data, block size = 900k
+bandit12@bandit:/tmp/dhars$ mv file file.bz2
+bandit12@bandit:/tmp/dhars$ bzip2 -d file.bz2
+bandit12@bandit:/tmp/dhars$ ls
+data.txt  file
+bandit12@bandit:/tmp/dhars$ file file
+file: gzip compressed data, was "data4.bin", last modified: Tue Oct 14 09:26:00 2025, max compression, from Unix, original size modulo 2^32 20480
+bandit12@bandit:/tmp/dhars$ mv file file.gz
+bandit12@bandit:/tmp/dhars$ gzip -d file.gz
+bandit12@bandit:/tmp/dhars$ ls
+data.txt  file
+bandit12@bandit:/tmp/dhars$ file file
+file: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/dhars$ mv file file.tar
+bandit12@bandit:/tmp/dhars$ tar xf file.tar
+bandit12@bandit:/tmp/dhars$ ls
+data5.bin  data.txt  file.tar
+bandit12@bandit:/tmp/dhars$ file data5.bin
+data5.bin: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/dhars$ rm file.tar
+bandit12@bandit:/tmp/dhars$ rm data
+rm: cannot remove 'data': No such file or directory
+bandit12@bandit:/tmp/dhars$ rm data.txt
+bandit12@bandit:/tmp/dhars$ ls
+data5.bin
+bandit12@bandit:/tmp/dhars$ file file
+file: cannot open `file' (No such file or directory)
+bandit12@bandit:/tmp/dhars$ file data5.bin
+data5.bin: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/dhars$ mv data5.bin data.tar
+bandit12@bandit:/tmp/dhars$ tar xf data.tar
+bandit12@bandit:/tmp/dhars$ ls
+data6.bin  data.tar
+bandit12@bandit:/tmp/dhars$ file data6.bin
+data6.bin: bzip2 compressed data, block size = 900k
+bandit12@bandit:/tmp/dhars$ mv data6.bin
+mv: missing destination file operand after 'data6.bin'
+Try 'mv --help' for more information.
+bandit12@bandit:/tmp/dhars$ mv data6.bin data.bz2
+bandit12@bandit:/tmp/dhars$ bzip -d data.bz2
+Command 'bzip' not found, but there are 21 similar ones.
+bandit12@bandit:/tmp/dhars$ bzip2 -d data.bz2
+bandit12@bandit:/tmp/dhars$ ls
+data  data.tar
+bandit12@bandit:/tmp/dhars$ file file
+file: cannot open `file' (No such file or directory)
+bandit12@bandit:/tmp/dhars$ file data
+data: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/dhars$ mv data data.tar
+bandit12@bandit:/tmp/dhars$ ls
+data.tar
+bandit12@bandit:/tmp/dhars$ tar xf data.tar
+bandit12@bandit:/tmp/dhars$ ls
+data8.bin  data.tar
+bandit12@bandit:/tmp/dhars$ file data8.bin
+data8.bin: gzip compressed data, was "data9.bin", last modified: Tue Oct 14 09:26:00 2025, max compression, from Unix, original size modulo 2^32 49
+bandit12@bandit:/tmp/dhars$ mv data8.bin data.gz
+bandit12@bandit:/tmp/dhars$ gzip -d data.gz
+bandit12@bandit:/tmp/dhars$ ls
+data  data.tar
+bandit12@bandit:/tmp/dhars$ file data
+data: ASCII text
+bandit12@bandit:/tmp/dhars$ cat data
+The password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn.
