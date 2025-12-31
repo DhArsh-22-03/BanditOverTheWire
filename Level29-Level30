@@ -1,0 +1,29 @@
+dharsh_18@Dharshini:~$ rm -rf repo
+dharsh_18@Dharshini:~$ git clone ssh://bandit30-git@bandit.labs.overthewire.org:2220/home/bandit30-git/repo
+Cloning into 'repo'...
+                         _                     _ _ _
+                        | |_   _ _ _ _   _| () |
+                        | '_ \ / ` | ' \ / ` | | _|
+                        | |) | (| | | | | (| | | |
+                        |./ \,|| ||\_,||\_|
+
+
+                      This is an OverTheWire game server.
+            More information on http://www.overthewire.org/wargames
+
+backend: gibson-0
+bandit30-git@bandit.labs.overthewire.org's password:
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (4/4), done.
+dharsh_18@Dharshini:~$ cd repo
+dharsh_18@Dharshini:~/repo$ ls
+README.md
+dharsh_18@Dharshini:~/repo$ cat README.md
+just an epmty file... muahaha
+kanimozhi_s@LAPTOP-QB661LHS:~/repo$ git tag
+secret
+dharsh_18@Dharshini:~/repo$ git show secret
+fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy
+dharsh_18@Dharshini:~$/repo$
